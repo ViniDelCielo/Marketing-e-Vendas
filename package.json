@@ -10,7 +10,21 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check:env": "node scripts/check-env.mjs"
+    "check:env": "node scripts/check-env.mjs",
+    "accounts:setup": "node scripts/migration/setup-accounts.mjs",
+    "sync:supabase": "node scripts/migration/sync-supabase.mjs",
+    "sync:export-schema": "node scripts/migration/export-schema-pg.mjs",
+    "sync:import-schema": "node scripts/migration/import-schema.mjs",
+    "sync:export-data": "node scripts/migration/export-data.mjs",
+    "sync:import-data": "node scripts/migration/import-data.mjs",
+    "sync:cleanup-data": "node scripts/migration/cleanup.mjs",
+    "sync:cleanup-all": "node scripts/migration/cleanup.mjs --all",
+    "migrate:setup": "node scripts/migration/setup-accounts.mjs",
+    "migrate:export-schema": "node scripts/migration/export-schema.mjs",
+    "migrate:import-schema": "node scripts/migration/import-schema.mjs",
+    "migrate:export-data": "node scripts/migration/export-data.mjs",
+    "migrate:import-data": "node scripts/migration/import-data.mjs",
+    "migrate:cleanup": "node scripts/migration/cleanup.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.101.0",
@@ -39,6 +53,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "pg": "^8.22.0",
     "vite": "^8.0.0"
   }
 }
