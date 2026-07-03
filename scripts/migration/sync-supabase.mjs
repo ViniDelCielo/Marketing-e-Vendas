@@ -1,5 +1,6 @@
 /**
- * Pipeline completo: Gerson → Kaizen (schema + dados)
+ * Pipeline: ORIGEM (Gerson) → KAIZEN (ViniDelCielo)
+ * Origem = SOMENTE LEITURA | Destino = ÚNICO destino de escrita
  */
 import { spawnSync } from 'child_process';
 

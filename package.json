@@ -11,6 +11,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "check:env": "node scripts/check-env.mjs",
+    "check:deploy": "node scripts/ensure-vinidelcielo.mjs",
+    "deploy:online": "node scripts/ensure-vinidelcielo.mjs --deploy && powershell -ExecutionPolicy Bypass -File scripts/deploy-online.ps1",
     "accounts:setup": "node scripts/migration/setup-accounts.mjs",
     "sync:supabase": "node scripts/migration/sync-supabase.mjs",
     "sync:export-schema": "node scripts/migration/export-schema-pg.mjs",

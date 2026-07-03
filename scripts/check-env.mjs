@@ -1,4 +1,5 @@
 import { loadDotEnv, requireEnv } from './load-env.js';
+import { assertWriteTarget } from './deploy-targets.mjs';
 
 loadDotEnv();
 
@@ -11,5 +12,12 @@ if (missing.length) {
   process.exit(1);
 }
 
-console.log('✅ Supabase configurado no .env');
+try {
+  assertWriteTarget(process.env.VITE_SUPABASE_URL, '.env');
+} catch (e) {
+  console.error(e.message);
+  process.exit(1);
+}
+
+console.log('✅ Supabase configurado no .env (Kaizen / ViniDelCielo)');
 console.log('   URL:', process.env.VITE_SUPABASE_URL);

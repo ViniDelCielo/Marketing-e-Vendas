@@ -8,6 +8,12 @@ const ACCOUNTS_ENV = path.join(ROOT, '.env.accounts');
 const LEGACY_MIGRATION_ENV = path.join(ROOT, '.env.migration');
 const DATA_DIR = path.join(ROOT, 'migration-data');
 
+import {
+  assertReadOnlySource,
+  assertWriteTarget,
+  extractProjectRef,
+} from '../deploy-targets.mjs';
+
 function parseEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return {};
   const env = {};
@@ -53,6 +59,11 @@ export function loadAccountsEnv() {
     serviceKey: pick(env, ['KAIZEN_SERVICE_ROLE_KEY', 'TARGET_SERVICE_ROLE_KEY']) || mainEnv.SUPABASE_SERVICE_ROLE_KEY,
     dbUrl: pick(env, ['KAIZEN_DATABASE_URL', 'TARGET_DATABASE_URL']),
   };
+
+  // Segurança: origem = só leitura | destino = só Kaizen (ViniDelCielo)
+  if (source.url) assertReadOnlySource(source.url, 'GERSON (origem)');
+  if (target.url) assertWriteTarget(target.url, 'KAIZEN (destino)');
+  if (target.dbUrl) assertWriteTarget(extractProjectRef(target.dbUrl) || target.dbUrl, 'KAIZEN DATABASE_URL');
 
   return { source, target, file };
 }

@@ -1,13 +1,17 @@
-# Deploy online — rode APÓS login na conta ViniDelCielo (Vercel + Supabase CLI)
-# Uso:
-#   1. npx vercel logout
-#   2. npx vercel login          (conta ViniDelCielo)
-#   3. npx supabase login        (conta ViniDelCielo)
-#   4. .\scripts\deploy-online.ps1
+# Deploy online — SOMENTE conta ViniDelCielo (NUNCA Gerson)
+# Pré-requisito:
+#   npx vercel logout
+#   npx vercel login          → ViniDelCielo
+#   npx supabase login        → ViniDelCielo
+# Uso: npm run deploy:online
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
+
+Write-Host "`n=== Verificando conta ViniDelCielo ===" -ForegroundColor Yellow
+node scripts/ensure-vinidelcielo.mjs --deploy
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 # Carrega .env local (não commitado)
 $envFile = Join-Path $root ".env"

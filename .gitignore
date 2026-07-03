@@ -30,6 +30,11 @@ whatsapp-server.js.bak
 audio_cache/
 db_dump2.json
 
+# Supabase CLI — vínculo local (nunca commitar link do Gerson)
+supabase/.temp/project-ref
+supabase/.temp/pooler-url
+supabase/.temp/linked-project.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
