@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('GLOBAL ERROR: ', e.message || e.error?.message, e.error);
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('PROMISE ERROR: ', e.reason);
+      });
+    </script>
+    <title>CRM Produção</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

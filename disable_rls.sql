@@ -1,0 +1,2 @@
+ALTER TABLE public.employee_integrations DISABLE ROW LEVEL SECURITY;
+ALTER TABLE public.google_events DISABLE ROW LEVEL SECURITY;
